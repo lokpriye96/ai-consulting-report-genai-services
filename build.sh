@@ -4,4 +4,5 @@ set -euo pipefail
 python src/derive.py > /dev/null
 node src/build_deck.js
 soffice --headless --convert-to pdf --outdir outputs outputs/TCS_AI_Deflation_Strategy.pptx
+python src/protect_pdf.py outputs/TCS_AI_Deflation_Strategy.pdf
 python -m pytest -q

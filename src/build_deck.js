@@ -39,7 +39,7 @@ pres.subject = "AI-assisted consulting report (Portfolio Project 3)";
 pres.theme = { headFontFace: THEME.headFontFace, bodyFontFace: THEME.bodyFontFace };
 const C = pres.SchemeColor;
 
-const FOOT = "Independent portfolio case on public data · not affiliated with or endorsed by TCS · not investment advice";
+const FOOT = "© 2026 Utkarsh Saxena  ·  Independent portfolio case on public data  ·  not affiliated with or endorsed by TCS  ·  not investment advice";
 pres.defineSlideMaster({
   title: "CONTENT",
   background: { color: HEX.white },
@@ -53,7 +53,7 @@ pres.defineSlideMaster({
 pres.defineSlideMaster({
   title: "DARK",
   background: { color: HEX.dark },
-  objects: [],
+  objects: [{ text: { text: "© 2026 Utkarsh Saxena", options: { x: 0.7, y: 7.05, w: 6, h: 0.25, fontSize: 9, color: HEX.pale, margin: 0 } } }],
 });
 
 const tb = (s, text, o) => s.addText(text, Object.assign({ margin: 0, isTextBox: true, fontSize: 14, color: C.text1, valign: "top" }, o));
@@ -506,7 +506,7 @@ pres.addSection({ title: "Appendix" });
     { text: "src/build_deck.js reads only derived.json and the new-source list", options: { bullet: true, breakLine: true } },
     { text: "8 new public sources (N1–N8) for pricing and strategy context", options: { bullet: true, breakLine: true } },
     { text: "Basis: calendar Q3 2026; run-rate = quarter × 4; USD", options: { bullet: true, breakLine: true } },
-    { text: "Built with Claude as an AI assistant; author set the question, checked figures and owns the conclusions", options: { bullet: true } },
+    { text: "Built with AI assistance (disclosed in the README); the author set the question, checked every figure and owns the conclusions", options: { bullet: true } },
   ], { x: 0.5, y: 1.95, w: 4.0, h: 4.5, fontSize: 12, paraSpaceAfter: 4 });
   const src = [
     ["P1", "AI-Powered CI Tracker: github.com/lokpriye96/ai-ci-tracker (72 events, 70 verified)"],
