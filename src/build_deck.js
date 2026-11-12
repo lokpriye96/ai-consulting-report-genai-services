@@ -92,10 +92,10 @@ pres.addSection({ title: "Introduction" });
   s.addNotes("Independent case built on my two earlier projects. The client framing (TCS leadership) is hypothetical; every number is from Project 1, Project 2 or a cited public source.");
 }
 
-// ================= 2. CEO brief (one page) =================
+// ================= 2. Executive summary (one page) =================
 {
   const K = D.ceo;
-  const s = content("Introduction", "CEO BRIEF  ·  THE WHOLE STORY ON ONE PAGE",
+  const s = content("Introduction", "EXECUTIVE SUMMARY",
     `TCS is winning the AI race it is measured on and losing the one that matters: its $${T.core_runrate_bn.toFixed(0)}\u00a0bn core is shrinking faster than AI can replace it`);
   const tag = (x, y, label, col) => {
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 1.05, h: 0.26, rectRadius: 0.05, fill: { color: col }, line: { color: col }, objectName: "tag-" + label + x });

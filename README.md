@@ -10,11 +10,11 @@ Project 3 of 3 in a linked series:
 |---|---|---|---|
 | 1 | AI-Powered Competitive Intelligence Tracker | What are 8 IT services leaders *announcing* in GenAI? | [Repo](https://github.com/lokpriye96/ai-ci-tracker) · [Dashboard](https://lokpriye96.github.io/ai-ci-tracker/) |
 | 2 | GenAI Services Market Analytics & Competitive Dashboard | Is AI showing up as *revenue*, and is it net-new? | [Repo](https://github.com/lokpriye96/genai-services-market-analytics) · [Dashboard](https://lokpriye96.github.io/genai-services-market-analytics/) |
-| 3 | **AI-Assisted Consulting Report** (this repo) | So what should a leader *do* about it? | 13-slide deck (one-page CEO brief + 11 slides + appendix) |
+| 3 | **AI-Assisted Consulting Report** (this repo) | So what should a leader *do* about it? | 13-slide deck (one-page executive summary + 11 slides + appendix) |
 
-![CEO brief: the whole story on one page](docs/slides/slide-02.png)
+![Executive summary (one page)](docs/slides/slide-02.png)
 
-**Slide 2 is a one-page CEO brief.** It separates **facts** (from the data) from **our view** (judgement the data does not state on its own):
+**Slide 2 is a one-page executive summary.** It separates **facts** (from the data) from **our view** (judgement the data does not state on its own):
 
 1. **The AI line is the wrong scoreboard:** 1 pt of core growth is worth ~9 pts of AI growth.
 2. **Deflation is hiding in the order book:** book-to-bill ranks #2 of 8 but growth ranks #5, so TCS is likely winning volume at lower prices (a hypothesis to test on renewal pricing).
