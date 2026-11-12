@@ -1,0 +1,199 @@
+{
+  "basis": "Latest quarter = calendar Q3 2026 (TCS Q2 FY27); run-rate = quarter x 4; USD",
+  "tcs": {
+    "revenue_runrate_bn": 30.57,
+    "ai_runrate_bn": 3.1,
+    "ai_share_pct": 10.1,
+    "core_runrate_bn": 27.47,
+    "core_growth_pct": -3.6,
+    "ai_growth_annualised_pct": 106.4,
+    "ai_3q_growth_pct": 72,
+    "ai_series": [
+      {
+        "period": "Q3 FY26",
+        "usd_bn": 1.8
+      },
+      {
+        "period": "Q4 FY26",
+        "usd_bn": 2.3
+      },
+      {
+        "period": "Q1 FY27",
+        "usd_bn": 2.6
+      },
+      {
+        "period": "Q2 FY27",
+        "usd_bn": 3.1
+      }
+    ],
+    "yoy_cc_pct": 2.8,
+    "yoy_usd_pct": 2.4,
+    "book_to_bill": 1.26,
+    "tcv_q_bn": 9.6,
+    "rev_per_employee_k": 51.1,
+    "headcount": 598056,
+    "headcount_yoy_pct": 0.8,
+    "share_of_gartner_pct": 1.64,
+    "share_of_eight_pct": 14.71,
+    "p1_events": 10,
+    "p1_partnerships": 6,
+    "p1_frontier_labs": "OpenAI,Mistral,Anthropic",
+    "p1_frontier_lab_events": 3,
+    "largest_acq_usd_m": 700.0
+  },
+  "ai_needed_flat_pct": 32,
+  "ai_needed_for_8pct": [
+    {
+      "core_growth_pct": -3.6,
+      "ai_growth_pct": 111
+    },
+    {
+      "core_growth_pct": -1.5,
+      "ai_growth_pct": 92
+    },
+    {
+      "core_growth_pct": 0.0,
+      "ai_growth_pct": 79
+    },
+    {
+      "core_growth_pct": 2.0,
+      "ai_growth_pct": 61
+    }
+  ],
+  "sensitivity": {
+    "ai_cases_pct": [
+      30,
+      60,
+      100
+    ],
+    "rows": [
+      {
+        "core_growth_pct": -3.6,
+        "cells": [
+          -0.2,
+          2.8,
+          6.9
+        ]
+      },
+      {
+        "core_growth_pct": -1.5,
+        "cells": [
+          1.7,
+          4.7,
+          8.8
+        ]
+      },
+      {
+        "core_growth_pct": 0.0,
+        "cells": [
+          3.0,
+          6.1,
+          10.1
+        ]
+      },
+      {
+        "core_growth_pct": 2.0,
+        "cells": [
+          4.8,
+          7.9,
+          11.9
+        ]
+      }
+    ]
+  },
+  "elasticity": {
+    "total_pts_per_core_pt": 0.9,
+    "total_pts_per_10pt_ai": 1.01
+  },
+  "peers": {
+    "Accenture": {
+      "core_growth_pct": 4.7,
+      "ai_growth_pct": 200.0,
+      "yoy_cc_pct": 7.0,
+      "p1_events": 8,
+      "book_to_bill": 1.19,
+      "rev_per_employee_k": 91.8
+    },
+    "TCS": {
+      "core_growth_pct": -3.6,
+      "ai_growth_pct": 106.4,
+      "yoy_cc_pct": 2.8,
+      "p1_events": 10,
+      "book_to_bill": 1.26,
+      "rev_per_employee_k": 51.1
+    },
+    "Capgemini": {
+      "core_growth_pct": null,
+      "ai_growth_pct": null,
+      "yoy_cc_pct": 11.7,
+      "p1_events": 8,
+      "book_to_bill": 0.89,
+      "rev_per_employee_k": 65.0
+    },
+    "Cognizant": {
+      "core_growth_pct": null,
+      "ai_growth_pct": null,
+      "yoy_cc_pct": 4.8,
+      "p1_events": 9,
+      "book_to_bill": 1.27,
+      "rev_per_employee_k": 63.0
+    },
+    "Infosys": {
+      "core_growth_pct": -5.9,
+      "ai_growth_pct": 139.7,
+      "yoy_cc_pct": 1.5,
+      "p1_events": 8,
+      "book_to_bill": 1.01,
+      "rev_per_employee_k": 61.9
+    },
+    "HCLTech": {
+      "core_growth_pct": -0.5,
+      "ai_growth_pct": 78.0,
+      "yoy_cc_pct": 2.6,
+      "p1_events": 10,
+      "book_to_bill": 0.88,
+      "rev_per_employee_k": 64.7
+    },
+    "Wipro": {
+      "core_growth_pct": null,
+      "ai_growth_pct": null,
+      "yoy_cc_pct": 0.6,
+      "p1_events": 10,
+      "book_to_bill": 0.99,
+      "rev_per_employee_k": 44.2
+    },
+    "Tech Mahindra": {
+      "core_growth_pct": null,
+      "ai_growth_pct": null,
+      "yoy_cc_pct": 7.2,
+      "p1_events": 7,
+      "book_to_bill": 0.6,
+      "rev_per_employee_k": 44.5
+    }
+  },
+  "rpe_peer_median_k": 62.5,
+  "market": {
+    "eight_yoy_usd_pct": 5.1,
+    "gartner_it_services_growth_pct": 8.7,
+    "spearman_events_vs_growth": -0.65,
+    "spearman_ai_vs_growth": -0.05,
+    "pool_mid_bn": 15.8,
+    "eight_revenue_bn": 207.8
+  },
+  "scenarios_2030_bn": {
+    "Bear": 205,
+    "Base": 233,
+    "Bull": 264
+  },
+  "deals": {
+    "capgemini_wns_usd_m": 3300.0,
+    "accenture_fy26_acq_usd_m": 4900.0,
+    "cognizant_openai_staff": 25000,
+    "cognizant_gemini_staff": 18000
+  },
+  "p1": {
+    "events_total": 72,
+    "events_verified": 70,
+    "tcs_verified": 10
+  }
+}
