@@ -16,17 +16,18 @@ const sg = (v, d = 1) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixe
 const OUT = path.join(ROOT, "outputs/TCS_AI_Deflation_Strategy.pptx");
 
 // ---------- theme ----------
+// Palette: purple-led, with red used sparingly for critical points.
 const THEME = {
   name: "AI Deflation Case",
-  headFontFace: "Cambria",
+  headFontFace: "Arial",
   bodyFontFace: "Calibri",
   colors: {
-    dk1: "16232A", lt1: "FFFFFF", dk2: "0F4C55", lt2: "EEF2F1",
-    accent1: "0F4C55", accent2: "C98A0B", accent3: "B63A2E", accent4: "2F7D5B",
-    accent5: "6B7A80", accent6: "9FB8BC", hlink: "0F4C55", folHlink: "6B7A80",
+    dk1: "3A3A3C", lt1: "FFFFFF", dk2: "301038", lt2: "F1F1F1",
+    accent1: "43224D", accent2: "3265AA", accent3: "E0044E", accent4: "776EA9",
+    accent5: "76767A", accent6: "A297B4", hlink: "3265AA", folHlink: "776EA9",
   },
 };
-const HEX = { ink: "16232A", teal: "0F4C55", amber: "C98A0B", red: "B63A2E", green: "2F7D5B", grey: "6B7A80", light: "EEF2F1", pale: "9FB8BC", line: "D5DDDB", white: "FFFFFF" };
+const HEX = { ink: "3A3A3C", teal: "43224D", dark: "301038", amber: "3265AA", red: "E0044E", green: "3265AA", grey: "76767A", light: "F1F1F1", pale: "A297B4", line: "D6D6D6", white: "FFFFFF", hi: "F288AC", soft: "E4DDEA" };
 const FONT = "+mn-lt";
 
 const pres = new pptxgen();
@@ -43,15 +44,15 @@ pres.defineSlideMaster({
   title: "CONTENT",
   background: { color: HEX.white },
   objects: [
-    { placeholder: { options: { name: "kicker", type: "body", x: 0.5, y: 0.28, w: 12.3, h: 0.3, fontSize: 11, bold: true, color: C.accent2, charSpacing: 1, margin: 0, valign: "top" }, text: "" } },
-    { placeholder: { options: { name: "title", type: "title", x: 0.5, y: 0.58, w: 12.3, h: 0.95, fontFace: THEME.headFontFace, fontSize: 24, bold: true, color: C.text1, margin: 0, valign: "top", align: "left" }, text: "" } },
+    { placeholder: { options: { name: "kicker", type: "body", x: 0.5, y: 0.28, w: 12.3, h: 0.3, fontSize: 11, bold: true, color: C.accent3, charSpacing: 1, margin: 0, valign: "top" }, text: "" } },
+    { placeholder: { options: { name: "title", type: "title", x: 0.5, y: 0.58, w: 12.3, h: 0.95, fontFace: THEME.headFontFace, fontSize: 22, bold: true, color: C.accent1, margin: 0, valign: "top", align: "left" }, text: "" } },
     { text: { text: FOOT, options: { x: 0.5, y: 7.1, w: 10.5, h: 0.25, fontSize: 9, color: C.accent5, margin: 0 } } },
   ],
   slideNumber: { x: 12.3, y: 7.1, w: 0.5, h: 0.25, fontSize: 9, color: HEX.grey, align: "right", margin: 0 },
 });
 pres.defineSlideMaster({
   title: "DARK",
-  background: { color: HEX.teal },
+  background: { color: HEX.dark },
   objects: [],
 });
 
@@ -78,12 +79,12 @@ pres.addSection({ title: "Introduction" });
 {
   const s = pres.addSlide({ masterName: "DARK", sectionTitle: "Introduction" });
   tb(s, "PORTFOLIO PROJECT 3 OF 3  ·  AI-ASSISTED CONSULTING REPORT", { x: 0.7, y: 0.8, w: 11.5, h: 0.35, fontSize: 12, bold: true, color: HEX.pale, charSpacing: 1 });
-  tb(s, "Getting ahead of AI deflation", { x: 0.7, y: 1.6, w: 11.5, h: 1.1, fontFace: "Cambria", fontSize: 44, bold: true, color: C.background1 });
+  tb(s, "Getting ahead of AI deflation", { x: 0.7, y: 1.6, w: 11.5, h: 1.1, fontFace: "Arial", fontSize: 44, bold: true, color: C.background1 });
   tb(s, "A growth agenda for TCS: how an Indian IT services leader should respond when AI shrinks its core business", { x: 0.7, y: 2.75, w: 9.8, h: 1.0, fontSize: 20, color: C.background1 });
   const stats = [[`$${T.ai_runrate_bn.toFixed(1)} bn`, "TCS AI revenue run-rate"], [sg(T.core_growth_pct), "core (non-AI) revenue per year"], [`~${D.ai_needed_flat_pct}%`, "AI growth needed just to stand still"]];
   stats.forEach(([big, lab], i) => {
     const x = 0.7 + i * 3.7;
-    tb(s, big, { x, y: 4.25, w: 3.4, h: 0.75, fontFace: "Cambria", fontSize: 36, bold: true, color: i === 0 ? C.background1 : "F2C46B" });
+    tb(s, big, { x, y: 4.25, w: 3.4, h: 0.75, fontFace: "Arial", fontSize: 36, bold: true, color: i === 0 ? C.background1 : HEX.hi });
     tb(s, lab, { x, y: 5.0, w: 3.4, h: 0.4, fontSize: 14, color: HEX.pale });
   });
   tb(s, "Utkarsh Saxena  ·  November 2026  ·  Built on Project 1 (AI competitive intelligence tracker) and Project 2 (GenAI services market analytics)", { x: 0.7, y: 6.15, w: 11.8, h: 0.35, fontSize: 12, color: C.background1 });
@@ -91,38 +92,68 @@ pres.addSection({ title: "Introduction" });
   s.addNotes("Independent case built on my two earlier projects. The client framing (TCS leadership) is hypothetical; every number is from Project 1, Project 2 or a cited public source.");
 }
 
-// ================= 2. Executive summary =================
+// ================= 2. CEO brief (one page) =================
 {
-  const s = content("Introduction", "EXECUTIVE SUMMARY",
-    `TCS's $${T.ai_runrate_bn.toFixed(1)} bn AI business is real, but it is not yet growing the company: the priority is to stop the core from shrinking`);
-  const scr = [
-    ["Situation", `AI is ${T.ai_share_pct}% of TCS revenue ($${T.ai_runrate_bn.toFixed(1)} bn run-rate, up ${T.ai_3q_growth_pct}% in three quarters). Bookings are healthy: book-to-bill ${T.book_to_bill.toFixed(2)}.`],
-    ["Complication", `The non-AI core is shrinking ${Math.abs(T.core_growth_pct)}% a year. TCS grew ${T.yoy_usd_pct}% in USD vs ${M.gartner_it_services_growth_pct}% for the IT services market. At today's core decline, AI must grow ~${D.ai_needed_flat_pct}% a year just to keep revenue flat.`],
-    ["Resolution", `The core is the bigger lever: 1 pt of core growth adds ~${D.elasticity.total_pts_per_core_pt} pt to total growth; 10 pts of AI growth add only ~${D.elasticity.total_pts_per_10pt_ai.toFixed(1)} pt. Four moves follow.`],
+  const K = D.ceo;
+  const s = content("Introduction", "CEO BRIEF  ·  THE WHOLE STORY ON ONE PAGE",
+    `TCS is winning the AI race it is measured on and losing the one that matters: its $${T.core_runrate_bn.toFixed(0)}\u00a0bn core is shrinking faster than AI can replace it`);
+  const tag = (x, y, label, col) => {
+    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 1.05, h: 0.26, rectRadius: 0.05, fill: { color: col }, line: { color: col }, objectName: "tag-" + label + x });
+    tb(s, label, { x, y, w: 1.05, h: 0.26, fontSize: 9, bold: true, color: C.background1, align: "center", valign: "middle", charSpacing: 1 });
+  };
+  // Column 1: the facts
+  tb(s, "What the numbers say", { x: 0.5, y: 1.6, w: 3.3, h: 0.3, fontSize: 13, bold: true, color: C.accent1 });
+  tag(2.75, 1.62, "FACT", HEX.grey);
+  const facts = [
+    [`$${T.ai_runrate_bn.toFixed(1)} bn`, `AI revenue, ${T.ai_share_pct}% of total; +${T.ai_3q_growth_pct}% in three quarters`, C.accent1],
+    [sg(T.core_growth_pct), `a year: the non-AI core ($${T.core_runrate_bn.toFixed(1)} bn) is shrinking`, C.accent3],
+    [`${T.yoy_usd_pct}%`, `growth vs ${M.gartner_it_services_growth_pct}% for the market: TCS is losing share`, C.accent3],
+    [`~${D.ai_needed_flat_pct}%`, "a year: AI growth needed to hold revenue flat", C.accent1],
   ];
-  scr.forEach(([lab, txt], i) => {
-    const y = 1.75 + i * 1.55;
-    card(s, 0.5, y, 6.5, 1.38, HEX.light, "scr-" + lab);
-    tb(s, lab.toUpperCase(), { x: 0.7, y: y + 0.15, w: 6.1, h: 0.3, fontSize: 12, bold: true, color: i === 1 ? C.accent3 : C.accent1 });
-    tb(s, txt, { x: 0.7, y: y + 0.45, w: 6.1, h: 0.9, fontSize: 14 });
+  facts.forEach(([big, txt, col], i) => {
+    const y = 1.98 + i * 1.0;
+    card(s, 0.5, y, 3.3, 0.9, HEX.light, "fact-" + i);
+    tb(s, big, { x: 0.65, y: y + 0.08, w: 3.0, h: 0.45, fontFace: "Arial", fontSize: 22, bold: true, color: col });
+    tb(s, txt, { x: 0.65, y: y + 0.5, w: 3.05, h: 0.38, fontSize: 11 });
   });
-  card(s, 7.3, 1.75, 5.5, 4.48, HEX.teal, "recs-panel");
-  tb(s, "RECOMMENDATIONS, IN PRIORITY ORDER", { x: 7.55, y: 1.92, w: 5.0, h: 0.3, fontSize: 12, bold: true, color: "F2C46B" });
-  const recs = [
-    ["Lead the re-pricing", "Move the annuity book to outcome pricing before clients force it"],
-    ["Turn alliances into certified capacity", "Fewer platforms; named, certified delivery teams"],
-    ["Win share, not just deals", "AI-led operations, GCC takeovers and scale M&A"],
-    ["Manage \"net-new AI\"", "Run and report the business on core growth, not the AI line"],
+  // Column 2: our judgement
+  tb(s, "What the numbers don't say on their own", { x: 4.05, y: 1.6, w: 4.6, h: 0.3, fontSize: 13, bold: true, color: C.accent1 });
+  tag(7.6, 1.62, "OUR VIEW", HEX.red);
+  const views = [
+    ["The AI line is the wrong scoreboard", `1 pt of core growth is worth ~${K.core_vs_ai_ratio} pts of AI growth. Fixing the core adds ~${K.core_fix_total_pts} pts a year (~$${K.core_fix_value_bn.toFixed(1)} bn), as much as ${K.core_fix_equiv_ai_pts} extra points of AI growth.`],
+    ["Deflation is hiding in the order book", `Book-to-bill is ${T.book_to_bill.toFixed(2)} (#${K.btb_rank} of 8), yet growth ranks #${K.growth_rank_cc} of 8: TCS is likely winning volume at lower prices. Test it on renewal pricing.`],
+    ["Scale has turned from moat to liability", `At $${T.rev_per_employee_k}k revenue per employee (peer median $${D.rpe_peer_median_k}k), every $1k TCS keeps, rather than passes on, is worth ~$${K.rpe_1k_value_bn} bn. Outcome pricing is how it keeps it.`],
+    ["Breadth is not a strategy", `The most AI announcements and among the slowest growth. Rivals sell depth: Cognizant has committed ${(D.deals.cognizant_openai_staff / 1000).toFixed(0)},000+ people to OpenAI.`],
   ];
-  recs.forEach(([h, d], i) => {
-    const y = 2.35 + i * 0.95;
-    s.addShape(pres.shapes.OVAL, { x: 7.55, y: y + 0.05, w: 0.45, h: 0.45, fill: { color: "F2C46B" }, line: { color: "F2C46B" }, objectName: "rec-num-" + (i + 1) });
-    tb(s, String(i + 1), { x: 7.55, y: y + 0.05, w: 0.45, h: 0.45, fontSize: 16, bold: true, color: C.text1, align: "center", valign: "middle" });
-    tb(s, h, { x: 8.15, y, w: 4.5, h: 0.32, fontSize: 15, bold: true, color: C.background1 });
-    tb(s, d, { x: 8.15, y: y + 0.33, w: 4.5, h: 0.5, fontSize: 13, color: "DDE7E6" });
+  views.forEach(([h, txt], i) => {
+    const y = 1.98 + i * 1.0;
+    s.addShape(pres.shapes.RECTANGLE, { x: 4.05, y, w: 4.6, h: 0.9, fill: { color: HEX.white }, line: { color: HEX.line, width: 0.75 }, objectName: "view-frame-" + i });
+    tb(s, `${i + 1}. ${h}`, { x: 4.2, y: y + 0.07, w: 4.35, h: 0.28, fontSize: 12.5, bold: true, color: C.accent1 });
+    tb(s, txt, { x: 4.2, y: y + 0.34, w: 4.35, h: 0.54, fontSize: 10.5 });
   });
-  source(s, "Project 2 (TCS Q2 FY27, calendar Q3 2026; run-rate = quarter × 4); Gartner IT services growth 2026 via Project 2; core-vs-AI arithmetic in src/derive.py.");
-  s.addNotes("Pyramid: one governing thought, three SCR lines, four recommendations. The key number is the 32%: AI must grow that fast just to offset the core decline.");
+  // Column 3: decisions
+  card(s, 8.9, 1.6, 3.9, 4.28, HEX.dark, "decisions");
+  tb(s, "Decisions for this quarter", { x: 9.1, y: 1.72, w: 3.5, h: 0.3, fontSize: 13, bold: true, color: HEX.hi });
+  const dec = [
+    ["Re-price first", "pilot outcome pricing on renewals due within 24 months, before clients reopen them"],
+    ["Go deep, not wide", "pick 2–3 AI platforms; publish certified headcount"],
+    ["Buy share", "launch a GCC-takeover offer and a scale M&A screen"],
+    ["Change the scoreboard", "make core growth a board KPI next to AI revenue"],
+  ];
+  dec.forEach(([h, d], i) => {
+    const y = 2.12 + i * 0.66;
+    s.addShape(pres.shapes.OVAL, { x: 9.1, y: y + 0.02, w: 0.36, h: 0.36, fill: { color: HEX.hi }, line: { color: HEX.hi }, objectName: "dec-" + i });
+    tb(s, String(i + 1), { x: 9.1, y: y + 0.02, w: 0.36, h: 0.36, fontSize: 12, bold: true, color: HEX.dark, align: "center", valign: "middle" });
+    tb(s, [{ text: h + ": ", options: { bold: true, color: C.background1 } }, { text: d, options: { color: HEX.soft } }], { x: 9.58, y, w: 3.1, h: 0.62, fontSize: 11 });
+  });
+  tb(s, "What we would not do", { x: 9.1, y: 4.83, w: 3.5, h: 0.26, fontSize: 11.5, bold: true, color: HEX.hi });
+  tb(s, "Chase the AI revenue headline, add more partnership announcements, or rely on HyperVault (revenue 18–24 months out) to fix the core.", { x: 9.1, y: 5.1, w: 3.55, h: 0.75, fontSize: 10.5, color: HEX.soft });
+  // Bottom: the prize
+  card(s, 0.5, 6.05, 12.3, 0.5, HEX.soft, "prize");
+  tb(s, [{ text: "The 24-month test:  ", options: { bold: true, color: C.accent1 } }, { text: `core growth from ${sg(T.core_growth_pct)} to ≥ 0%, outcome-priced revenue disclosed, revenue per employee moving towards $${D.rpe_peer_median_k}k. Miss it and AI must keep growing ~${D.ai_needed_flat_pct}% a year just to stand still.` }],
+    { x: 0.65, y: 6.05, w: 12.0, h: 0.5, fontSize: 11.5, valign: "middle" });
+  source(s, "FACT: Project 2 (TCS Q2 FY27 = calendar Q3 2026; run-rate = quarter × 4), Project 1 events, Gartner via Project 2, N8. OUR VIEW: author's judgement from that evidence; the order-book point is a hypothesis to test. Arithmetic in src/derive.py.");
+  s.addNotes("Open with the title line, then read across: facts, what they mean, what to decide. If there is time for one number, use the ~9x: one point of core growth is worth about nine points of AI growth.");
 }
 
 // ================= 3. Question and objectives =================
@@ -173,7 +204,7 @@ pres.addSection({ title: "Situation and complication" });
   stats.forEach(([big, lab, sub, col], i) => {
     const y = 1.65 + i * 1.2;
     card(s, 8.1, y, 4.7, 1.05, HEX.light, "stat-" + i);
-    tb(s, big, { x: 8.3, y: y + 0.12, w: 1.6, h: 0.8, fontFace: "Cambria", fontSize: 28, bold: true, color: col, valign: "middle" });
+    tb(s, big, { x: 8.3, y: y + 0.12, w: 1.6, h: 0.8, fontFace: "Arial", fontSize: 28, bold: true, color: col, valign: "middle" });
     tb(s, lab, { x: 9.95, y: y + 0.12, w: 2.75, h: 0.35, fontSize: 14, bold: true });
     tb(s, sub, { x: 9.95, y: y + 0.47, w: 2.75, h: 0.5, fontSize: 11, color: C.accent5 });
   });
@@ -188,8 +219,8 @@ pres.addSection({ title: "Situation and complication" });
   const coreVals = disc.map(k => P[k].core_growth_pct);
   s.addChart(pres.charts.BAR, [{ name: "Core growth", labels: disc, values: coreVals }], Object.assign(chartBase(), {
     x: 0.5, y: 1.65, w: 6.0, h: 4.25, barDir: "col", barGapWidthPct: 60,
-    chartColors: coreVals.map((v, i) => disc[i] === "TCS" ? HEX.red : v < 0 ? "D9928A" : HEX.green),
-    invertedColors: coreVals.map((v, i) => disc[i] === "TCS" ? HEX.red : v < 0 ? "D9928A" : HEX.green),
+    chartColors: coreVals.map((v, i) => disc[i] === "TCS" ? HEX.red : v < 0 ? HEX.hi : HEX.green),
+    invertedColors: coreVals.map((v, i) => disc[i] === "TCS" ? HEX.red : v < 0 ? HEX.hi : HEX.green),
     showTitle: true, title: "Core (non-AI) revenue growth, annualised %",
     showValue: true, dataLabelPosition: "outEnd", dataLabelFormatCode: "+0.0;−0.0", dataLabelFontBold: true,
     valAxisHidden: true, valAxisMinVal: -7, valAxisMaxVal: 6, valGridLine: { style: "none" }, catAxisLabelPos: "low",
@@ -225,7 +256,7 @@ pres.addSection({ title: "Situation and complication" });
   facts.forEach(([big, txt, src], i) => {
     const x = 0.5 + (i % 2) * 3.2, y = 1.7 + Math.floor(i / 2) * 2.35;
     card(s, x, y, 3.0, 2.15, HEX.light, "fact-" + i);
-    tb(s, big, { x: x + 0.2, y: y + 0.15, w: 2.6, h: 0.65, fontFace: "Cambria", fontSize: 28, bold: true, color: i < 2 ? C.accent3 : C.accent2 });
+    tb(s, big, { x: x + 0.2, y: y + 0.15, w: 2.6, h: 0.65, fontFace: "Arial", fontSize: 28, bold: true, color: i < 2 ? C.accent3 : C.accent2 });
     tb(s, txt, { x: x + 0.2, y: y + 0.82, w: 2.6, h: 1.0, fontSize: 13 });
     tb(s, src, { x: x + 0.2, y: y + 1.8, w: 2.6, h: 0.28, fontSize: 10, color: C.accent5 });
   });
@@ -249,7 +280,7 @@ pres.addSection({ title: "Situation and complication" });
   const s = content("Situation and complication", "SO WHAT: THE ARITHMETIC",
     `At today's core decline, TCS's AI business must grow ~${D.ai_needed_flat_pct}% a year just for the company to stand still`);
   tb(s, "TCS total revenue growth over one year, % (derived)", { x: 0.5, y: 1.65, w: 7.4, h: 0.35, fontSize: 15, bold: true, color: C.accent1 });
-  const heat = v => (v < 1 ? "F1D3CF" : v < 5 ? "F6E3B8" : "CFE6DA");
+  const heat = v => (v < 1 ? "F9D0DE" : v < 5 ? "E4DDEA" : "D3E0F2");
   const H = { bold: true, color: HEX.white, fill: { color: HEX.teal }, fontSize: 13, fontFace: FONT, align: "center", valign: "middle" };
   const rows = [[{ text: "Core growth / yr  ↓    AI growth / yr  →", options: Object.assign({}, H, { align: "left" }) }, ...D.sensitivity.ai_cases_pct.map(a => ({ text: `+${a}%`, options: H }))]];
   D.sensitivity.rows.forEach((r, i) => {
@@ -269,7 +300,7 @@ pres.addSection({ title: "Situation and complication" });
   call.forEach(([big, txt], i) => {
     const y = 1.65 + i * 1.5;
     card(s, 8.3, y, 4.5, 1.32, i === 2 ? HEX.teal : HEX.light, "call-" + i);
-    tb(s, big, { x: 8.5, y: y + 0.12, w: 4.1, h: 0.6, fontFace: "Cambria", fontSize: 26, bold: true, color: i === 2 ? "F2C46B" : C.accent1 });
+    tb(s, big, { x: 8.5, y: y + 0.12, w: 4.1, h: 0.6, fontFace: "Arial", fontSize: 26, bold: true, color: i === 2 ? HEX.hi : C.accent1 });
     tb(s, txt, { x: 8.5, y: y + 0.72, w: 4.1, h: 0.55, fontSize: 13, color: i === 2 ? C.background1 : C.text1 });
   });
   tb(s, "Implication: stopping the core decline is worth more than accelerating AI. TCS management's own goal of high-single-digit growth (N4) is out of reach on AI alone.", { x: 8.3, y: 6.15, w: 4.5, h: 0.6, fontSize: 12, bold: true, color: C.accent3 });
@@ -291,13 +322,13 @@ const RECS = [
     const x = 0.5 + i * 3.1, y = 1.7, w = 2.9;
     card(s, x, y, w, 4.75, i === 0 ? HEX.teal : HEX.light, "rec-card-" + r.n);
     const dark = i === 0;
-    s.addShape(pres.shapes.OVAL, { x: x + 0.2, y: y + 0.2, w: 0.55, h: 0.55, fill: { color: dark ? "F2C46B" : HEX.teal }, line: { color: dark ? "F2C46B" : HEX.teal }, objectName: "rec-ov-" + r.n });
+    s.addShape(pres.shapes.OVAL, { x: x + 0.2, y: y + 0.2, w: 0.55, h: 0.55, fill: { color: dark ? HEX.hi : HEX.teal }, line: { color: dark ? HEX.hi : HEX.teal }, objectName: "rec-ov-" + r.n });
     tb(s, String(r.n), { x: x + 0.2, y: y + 0.2, w: 0.55, h: 0.55, fontSize: 18, bold: true, align: "center", valign: "middle", color: dark ? C.text1 : C.background1 });
-    tb(s, r.t, { x: x + 0.2, y: y + 0.9, w: w - 0.4, h: 0.75, fontFace: "Cambria", fontSize: 17, bold: true, color: dark ? C.background1 : C.text1 });
+    tb(s, r.t, { x: x + 0.2, y: y + 0.9, w: w - 0.4, h: 0.75, fontFace: "Arial", fontSize: 17, bold: true, color: dark ? C.background1 : C.text1 });
     tb(s, r.what, { x: x + 0.2, y: y + 1.65, w: w - 0.4, h: 1.45, fontSize: 13, color: dark ? C.background1 : C.text1 });
-    tb(s, "Why: " + r.why, { x: x + 0.2, y: y + 3.1, w: w - 0.4, h: 0.65, fontSize: 12, italic: true, color: dark ? "DDE7E6" : C.accent5 });
+    tb(s, "Why: " + r.why, { x: x + 0.2, y: y + 3.1, w: w - 0.4, h: 0.65, fontSize: 12, italic: true, color: dark ? HEX.soft : C.accent5 });
     tb(s, [{ text: "Impact  ", options: { bold: true } }, { text: r.impact, options: { breakLine: true } }, { text: "Time to impact  ", options: { bold: true } }, { text: r.time }],
-      { x: x + 0.2, y: y + 3.9, w: w - 0.4, h: 0.65, fontSize: 12, color: dark ? "F2C46B" : C.accent1 });
+      { x: x + 0.2, y: y + 3.9, w: w - 0.4, h: 0.65, fontSize: 12, color: dark ? HEX.hi : C.accent1 });
   });
   source(s, "Author's assessment of impact and timing, based on the evidence on slides 4–7.");
 }
@@ -383,7 +414,7 @@ const detailSlide = (pair, title) => {
   pair.forEach((d, i) => {
     const y = 1.98 + i * 2.33;
     card(s, 0.5, y, 12.3, 2.18, HEX.light, "detail-" + d.r.n);
-    tb(s, `${d.r.n}. ${d.r.t}`, { x: 0.7, y: y + 0.12, w: 11.9, h: 0.35, fontFace: "Cambria", fontSize: 16, bold: true, color: C.accent1 });
+    tb(s, `${d.r.n}. ${d.r.t}`, { x: 0.7, y: y + 0.12, w: 11.9, h: 0.35, fontFace: "Arial", fontSize: 16, bold: true, color: C.accent1 });
     [d.rationale, d.kpis, d.risks].forEach((list, j) => {
       tb(s, list.map((t, k) => ({ text: t, options: { bullet: true, breakLine: k < list.length - 1 } })),
         { x: colX[j] + 0.2, y: y + 0.52, w: colW[j] - 0.3, h: 1.6, fontSize: 12, paraSpaceAfter: 3 });
@@ -418,9 +449,9 @@ pres.addSection({ title: "Roadmap and next steps" });
   ];
   plan.forEach(([lab, cells], i) => {
     const y = 2.22 + i * 0.98;
-    tb(s, lab, { x: 0.5, y, w: 2.7, h: 0.85, fontFace: "Cambria", fontSize: 15, bold: true, color: C.accent1, valign: "middle" });
+    tb(s, lab, { x: 0.5, y, w: 2.7, h: 0.85, fontFace: "Arial", fontSize: 15, bold: true, color: C.accent1, valign: "middle" });
     cells.forEach((t, j) => {
-      card(s, x0 + j * colW, y, colW - 0.1, 0.85, j === 0 ? "DCE8E6" : HEX.light, `rm-${i}-${j}`);
+      card(s, x0 + j * colW, y, colW - 0.1, 0.85, j === 0 ? HEX.soft : HEX.light, `rm-${i}-${j}`);
       tb(s, t, { x: x0 + j * colW + 0.12, y: y + 0.05, w: colW - 0.34, h: 0.75, fontSize: 12, valign: "middle" });
     });
   });

@@ -27,3 +27,9 @@ def test_project_links():
     assert D["p1"] == {"events_total": 72, "events_verified": 70, "tcs_verified": 10}
     assert D["market"]["spearman_events_vs_growth"] == -0.65
     assert D["rpe_peer_median_k"] == 62.5
+
+
+def test_ceo_page():
+    c = D["ceo"]
+    assert c == {"rpe_1k_value_bn": 0.6, "core_fix_total_pts": 3.2, "core_fix_value_bn": 1.0,
+                 "core_fix_equiv_ai_pts": 32, "core_vs_ai_ratio": 9, "growth_rank_cc": 5, "btb_rank": 2}

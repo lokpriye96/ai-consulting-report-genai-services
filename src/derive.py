@@ -103,6 +103,17 @@ out = {
     },
     "ai_needed_flat_pct": round(ai_needed_flat),
     "ai_needed_for_8pct": ai_needed_8,
+    "ceo": {
+        # Value of each $1k of revenue per employee at TCS's headcount (USD bn)
+        "rpe_1k_value_bn": round(int(prod["TCS"]["headcount"]) * 1000 / 1e9, 1),
+        # Fixing the core (from today's decline to 0%): total-growth points and revenue per year
+        "core_fix_total_pts": round(-core_g * per_core_pt, 1),
+        "core_fix_value_bn": round(-core_g / 100 * tcs_core, 1),
+        "core_fix_equiv_ai_pts": round(-core_g * per_core_pt / per_ai_10pt * 10),
+        "core_vs_ai_ratio": round(per_core_pt / (per_ai_10pt / 10)),
+        "growth_rank_cc": int(mom["TCS"]["rank_growth"]),
+        "btb_rank": sorted([f(score[k]["book_to_bill"]) for k in FIRMS], reverse=True).index(f(score["TCS"]["book_to_bill"])) + 1,
+    },
     "sensitivity": {"ai_cases_pct": AI_CASES, "rows": sens},
     "elasticity": {"total_pts_per_core_pt": round(per_core_pt, 2), "total_pts_per_10pt_ai": round(per_ai_10pt, 2)},
     "peers": {

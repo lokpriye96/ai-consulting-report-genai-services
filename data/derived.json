@@ -60,6 +60,15 @@
       "ai_growth_pct": 61
     }
   ],
+  "ceo": {
+    "rpe_1k_value_bn": 0.6,
+    "core_fix_total_pts": 3.2,
+    "core_fix_value_bn": 1.0,
+    "core_fix_equiv_ai_pts": 32,
+    "core_vs_ai_ratio": 9,
+    "growth_rank_cc": 5,
+    "btb_rank": 2
+  },
   "sensitivity": {
     "ai_cases_pct": [
       30,

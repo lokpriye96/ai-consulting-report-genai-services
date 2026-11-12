@@ -10,9 +10,16 @@ Project 3 of 3 in a linked series:
 |---|---|---|---|
 | 1 | AI-Powered Competitive Intelligence Tracker | What are 8 IT services leaders *announcing* in GenAI? | [Repo](https://github.com/lokpriye96/ai-ci-tracker) · [Dashboard](https://lokpriye96.github.io/ai-ci-tracker/) |
 | 2 | GenAI Services Market Analytics & Competitive Dashboard | Is AI showing up as *revenue*, and is it net-new? | [Repo](https://github.com/lokpriye96/genai-services-market-analytics) · [Dashboard](https://lokpriye96.github.io/genai-services-market-analytics/) |
-| 3 | **AI-Assisted Consulting Report** (this repo) | So what should a leader *do* about it? | 13-slide deck (12 + appendix) |
+| 3 | **AI-Assisted Consulting Report** (this repo) | So what should a leader *do* about it? | 13-slide deck (one-page CEO brief + 11 slides + appendix) |
 
-![Executive summary](docs/slides/slide-02.png)
+![CEO brief: the whole story on one page](docs/slides/slide-02.png)
+
+**Slide 2 is a one-page CEO brief.** It separates **facts** (from the data) from **our view** (judgement the data does not state on its own):
+
+1. **The AI line is the wrong scoreboard:** 1 pt of core growth is worth ~9 pts of AI growth.
+2. **Deflation is hiding in the order book:** book-to-bill ranks #2 of 8 but growth ranks #5, so TCS is likely winning volume at lower prices (a hypothesis to test on renewal pricing).
+3. **Scale has turned from moat to liability:** at TCS's headcount, every $1k of revenue per employee it keeps rather than passes on is worth ~$0.6 bn.
+4. **Breadth is not a strategy:** the most AI announcements, among the slowest growth.
 
 ---
 
@@ -60,6 +67,7 @@ New public sources (N1–N8) ─────────────▶ data/new
 - **Derived arithmetic:** TCS core = revenue − AI. One-year growth = (AI × AI growth + core × core growth) ÷ total.
 - **New sources (N1–N8),** all public, listed with URLs in [`data/new_sources.csv`](data/new_sources.csv): Reuters (via Outsource Accelerator) on outcome pricing, HFS Research on renegotiation, Everest Group (via Let's Data Science/Moneycontrol) on deflation, JM Financial (via Business Today) and Business Standard on TCS management views, Tata Group, Inc42 and People Matters on HyperVault.
 - **Native PowerPoint charts and tables,** so every chart can be edited in PowerPoint.
+- **Design:** a purple-led palette with red reserved for critical points, Arial headings and Calibri body text.
 
 **Rebuild**
 
