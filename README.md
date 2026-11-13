@@ -118,4 +118,9 @@ docs/                GitHub Pages web view + slide images
 tests/               headline-number tests
 ```
 
-Licence: MIT · Author: Utkarsh Saxena · [LinkedIn](https://www.linkedin.com/in/utkarsh-lokpriye-)
+## Licence
+
+- **Report, deck, web page and write-up:** © 2026 Utkarsh Saxena, licensed [CC BY-NC-ND 4.0](LICENSE-CONTENT.md). You may share them unchanged with credit, but not change them or use them commercially without permission.
+- **Code** (`src/`, `tests/`, `build.sh`): [MIT](LICENSE-CODE).
+
+Author: Utkarsh Saxena · [LinkedIn](https://www.linkedin.com/in/utkarsh-lokpriye-)
