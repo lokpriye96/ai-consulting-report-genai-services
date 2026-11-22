@@ -19,7 +19,7 @@ Project 3 of 3 in a linked series:
 1. **The AI line is the wrong scoreboard:** 1 pt of core growth is worth ~9 pts of AI growth.
 2. **Deflation is hiding in the order book:** book-to-bill ranks #2 of 8 but growth ranks #5, so TCS is likely winning volume at lower prices (a hypothesis to test on renewal pricing).
 3. **Scale has turned from moat to liability:** at TCS's headcount, every $1k of revenue per employee it keeps rather than passes on is worth ~$0.6 bn.
-4. **Breadth is not a strategy:** joint-most AI announcements (10, level with HCLTech and Wipro), yet growth ranks #5 of 8.
+4. **Breadth is not a strategy:** joint second-most AI announcements (11; only HCLTech has more, with 12), yet growth ranks #5 of 8.
 
 ---
 
@@ -41,7 +41,7 @@ Project 3 of 3 in a linked series:
 |---|---|---|
 | **Situation** | AI is 10.1% of TCS revenue: a $3.1 bn run-rate, up 72% in three quarters. Book-to-bill is 1.26. | Project 2; TCS releases |
 | **Complication 1** | TCS's non-AI core is shrinking 3.6% a year. TCS grew 2.4% in USD vs 8.7% for the IT services market. | Project 2 `sql/03`, `sql/01`; Gartner |
-| **Complication 2** | Clients want the same output for 25–30% less and reopen contracts within 24 months. Announcement counts correlate −0.65 with growth. | N1, N2, N3; Projects 1 × 2 |
+| **Complication 2** | Clients want the same output for 25–30% less and reopen contracts within 24 months. Announcement counts correlate −0.66 with growth. | N1, N2, N3; Projects 1 × 2 |
 | **So what** | At today's core decline, AI must grow ~32% a year just to keep revenue flat. 1 pt of core growth adds ~0.9 pt of total growth; 10 pts of AI growth add ~1.0 pt. | `src/derive.py` |
 
 ## Recommendations (in priority order)
@@ -49,7 +49,7 @@ Project 3 of 3 in a linked series:
 | # | Move | Rationale | KPIs to track | Main risk |
 |---|---|---|---|---|
 | 1 | **Lead the re-pricing:** move the application and infrastructure annuity book to outcome pricing before clients force it | Core −3.6%/yr is the biggest drag; ~80% of TCS's finance, HR and BPO contracts already run on outcomes (N1) | Core growth −3.6%/yr → ≥ 0% in 24 months; share of outcome-priced revenue; renewal price change; EBIT margin vs 25%+ target | TCS takes delivery risk |
-| 2 | **Turn alliances into certified capacity:** 2–3 platforms, named certified teams | Announcements do not predict growth (ρ = −0.65); widest bench, slowest of the four largest firms | Certified practitioners per platform; AI bookings and win rate per alliance | Model leadership shifts |
+| 2 | **Turn alliances into certified capacity:** 2–3 platforms, named certified teams | Announcements do not predict growth (ρ = −0.66); widest bench, slowest of the four largest firms | Certified practitioners per platform; AI bookings and win rate per alliance | Model leadership shifts |
 | 3 | **Win share, not just deals:** AI-led operations, GCC takeovers, scale M&A | Book-to-bill 1.26 but growth 2.4% vs market 8.7%; Capgemini bought scale (WNS, $3.3 bn) | Share of Gartner IT services (1.64% today); TCV-to-growth conversion; GCC takeovers | Integration, margin dilution |
 | 4 | **Manage “net-new AI”:** run and report on core growth, AI bookings, revenue per employee | AI share does not predict growth (ρ = −0.05); revenue per employee $51.1k vs peer median $62.5k | Core growth disclosed quarterly; AI share of bookings; revenue per employee | Disclosure exposes the decline |
 

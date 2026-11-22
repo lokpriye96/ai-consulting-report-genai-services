@@ -123,7 +123,7 @@ pres.addSection({ title: "Introduction" });
     ["The AI line is the wrong scoreboard", `1 pt of core growth is worth ~${K.core_vs_ai_ratio} pts of AI growth. Fixing the core adds ~${K.core_fix_total_pts} pts a year (~$${K.core_fix_value_bn.toFixed(1)} bn), as much as ~${K.core_fix_equiv_ai_pts} extra pts of AI growth.`],
     ["Deflation is hiding in the order book", `Book-to-bill is ${T.book_to_bill.toFixed(2)} (#${K.btb_rank} of 8), yet growth ranks #${K.growth_rank_cc} of 8: TCS is likely winning volume at lower prices. Test it on renewal pricing.`],
     ["Scale has turned from moat to liability", `At $${T.rev_per_employee_k}k revenue per employee (peer median $${D.rpe_peer_median_k}k), every $1k TCS keeps, rather than passes on, is worth ~$${K.rpe_1k_value_bn} bn. Outcome pricing is how it keeps it.`],
-    ["Breadth is not a strategy", `Joint-most AI announcements (${T.p1_events}, level with HCLTech and Wipro), yet growth ranks #${K.growth_rank_cc} of 8. Rivals sell depth: Cognizant has committed ${(D.deals.cognizant_openai_staff / 1000).toFixed(0)},000+ staff to OpenAI.`],
+    ["Breadth is not a strategy", `Joint second-most AI announcements (${T.p1_events}; only HCLTech has more, ${P.HCLTech.p1_events}), yet growth ranks #${K.growth_rank_cc} of 8. Rivals sell depth: Cognizant has committed ${(D.deals.cognizant_openai_staff / 1000).toFixed(0)},000+ staff to OpenAI.`],
   ];
   views.forEach(([h, txt], i) => {
     const y = 1.98 + i * 1.0;
@@ -261,17 +261,17 @@ pres.addSection({ title: "Situation and complication" });
     tb(s, src, { x: x + 0.2, y: y + 1.8, w: 2.6, h: 0.28, fontSize: 10, color: C.accent5 });
   });
   const firms = Object.keys(P);
-  const series = [{ name: "X", values: firms.map(k => P[k].p1_events) }, { name: "Revenue growth YoY cc %", values: firms.map(k => P[k].yoy_cc_pct), labels: firms.map(k => k === "TCS" ? "TCS, HCLTech" : k === "HCLTech" ? "" : k) }];
+  const series = [{ name: "X", values: firms.map(k => P[k].p1_events) }, { name: "Revenue growth YoY cc %", values: firms.map(k => P[k].yoy_cc_pct), labels: firms.map(k => k) }];
   s.addChart(pres.charts.SCATTER, series, Object.assign(chartBase(), {
     x: 7.1, y: 1.65, w: 5.7, h: 4.55, chartColors: [HEX.teal], lineSize: 0, lineDataSymbol: "circle", lineDataSymbolSize: 10,
     showTitle: true, title: `Project 1 AI announcements vs growth (Spearman ρ = ${mn(M.spearman_events_vs_growth)})`,
     showLabel: true, dataLabelFormatScatter: "custom", dataLabelPosition: "t", dataLabelFontSize: 10,
-    valAxisMinVal: 0, valAxisMaxVal: 13, valAxisMajorUnit: 2, catAxisMinVal: 6, catAxisMaxVal: 11, catAxisMajorUnit: 1,
+    valAxisMinVal: 0, valAxisMaxVal: 13, valAxisMajorUnit: 2, catAxisMinVal: 6, catAxisMaxVal: 13, catAxisMajorUnit: 1,
     showValAxisTitle: true, valAxisTitle: "Revenue growth YoY, constant currency %", valAxisTitleFontSize: 10, valAxisTitleColor: HEX.grey, valAxisTitleFontFace: FONT,
     showCatAxisTitle: true, catAxisTitle: "Verified AI announcements per firm, Jun 2025 – Nov 2026", catAxisTitleFontSize: 10, catAxisTitleColor: HEX.grey, catAxisTitleFontFace: FONT,
     catAxisLabelFontSize: 10, catGridLine: { style: "none" },
   }));
-  tb(s, "TCS, HCLTech and Wipro announced most (10 each), yet all grew under 3%", { x: 7.1, y: 6.22, w: 5.7, h: 0.35, fontSize: 12, italic: true, color: C.accent5 });
+  tb(s, "HCLTech (12), TCS and Wipro (11 each) announced most, yet each grew under 3%", { x: 7.1, y: 6.22, w: 5.7, h: 0.35, fontSize: 12, italic: true, color: C.accent5 });
   source(s, "N1 Outsource Accelerator reporting Reuters (28 Aug 2026); N2 HFS Research (30 Jun 2026); N3 Let's Data Science reporting Moneycontrol/Everest Group (27 Oct 2026); Project 2 sql/05_momentum_vs_money.sql. Eight firms only: directional, not proof.");
 }
 
