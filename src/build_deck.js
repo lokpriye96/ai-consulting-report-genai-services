@@ -96,64 +96,77 @@ pres.addSection({ title: "Introduction" });
 {
   const K = D.ceo;
   const s = content("Introduction", "EXECUTIVE SUMMARY",
-    `TCS is winning the AI race it is measured on and losing the one that matters: its $${T.core_runrate_bn.toFixed(1)}\u00a0bn core is shrinking faster than AI can replace it`);
-  const tag = (x, y, label, col) => {
-    s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 1.05, h: 0.26, rectRadius: 0.05, fill: { color: col }, line: { color: col }, objectName: "tag-" + label + x });
-    tb(s, label, { x, y, w: 1.05, h: 0.26, fontSize: 9, bold: true, color: C.background1, align: "center", valign: "middle", charSpacing: 1 });
-  };
-  // Column 1: the facts
-  tb(s, "What the numbers say", { x: 0.5, y: 1.6, w: 3.3, h: 0.3, fontSize: 13, bold: true, color: C.accent1 });
-  tag(2.75, 1.62, "FACT", HEX.grey);
-  const facts = [
-    [`$${T.ai_runrate_bn.toFixed(1)} bn`, `AI revenue: ${T.ai_share_pct}% of total, +${T.ai_3q_growth_pct}% in 3 quarters`, C.accent1],
-    [sg(T.core_growth_pct), `a year: the non-AI core ($${T.core_runrate_bn.toFixed(1)} bn) is shrinking`, C.accent3],
-    [`+${T.yoy_usd_pct}%`, `growth vs ${M.gartner_it_services_growth_pct}% for the market: losing share`, C.accent3],
-    [`~${D.ai_needed_flat_pct}%`, "a year: AI growth needed to hold revenue flat", C.accent1],
+    `TCS is winning the AI race but losing its $${T.core_runrate_bn.toFixed(1)} bn core. The fastest route back to growth is fixing the core, not chasing the AI headline`);
+  const XS = { light: "F4F1F6", line: "DDD6E3", soft: "E4DDEA" };
+  const box = (x, y, w, h, fill, name, line) =>
+    s.addShape(pres.shapes.RECTANGLE, { x, y, w, h, fill: { color: fill }, line: { color: line || fill, width: 0.75 }, objectName: name });
+  const label = (text, x, y, w, color) => tb(s, text, { x, y, w, h: 0.26, fontSize: 11, bold: true, color, charSpacing: 2 });
+
+  // Row 1: the problem in four numbers
+  label("THE PROBLEM IN FOUR NUMBERS", 0.5, 1.62, 6, C.accent5);
+  const kpis = [
+    [`$${T.ai_runrate_bn.toFixed(1)} bn`, `AI revenue run-rate, up ${T.ai_3q_growth_pct}% in three quarters`, HEX.teal],
+    [sg(T.core_growth_pct), `a year: the $${T.core_runrate_bn.toFixed(1)} bn non-AI core is shrinking`, HEX.red],
+    [`+${T.yoy_usd_pct}%`, `growth vs ${M.gartner_it_services_growth_pct}% for the market: TCS is losing share`, HEX.red],
+    [`~${D.ai_needed_flat_pct}%`, "a year of AI growth needed just to keep revenue flat", HEX.red],
   ];
-  facts.forEach(([big, txt, col], i) => {
-    const y = 1.98 + i * 1.0;
-    card(s, 0.5, y, 3.3, 0.95, HEX.light, "fact-" + i);
-    tb(s, big, { x: 0.65, y: y + 0.08, w: 3.0, h: 0.45, fontFace: "Arial", fontSize: 22, bold: true, color: col });
-    tb(s, txt, { x: 0.65, y: y + 0.5, w: 3.05, h: 0.38, fontSize: 11 });
+  const kw = 2.925, kg = 0.2;
+  kpis.forEach(([big, txt, col], i) => {
+    const x = 0.5 + i * (kw + kg);
+    box(x, 1.92, kw, 1.06, XS.light, "kpi-" + i);
+    tb(s, big, { x: x + 0.18, y: 1.98, w: kw - 0.3, h: 0.52, fontFace: "Arial", fontSize: 28, bold: true, color: col });
+    tb(s, txt, { x: x + 0.18, y: 2.5, w: kw - 0.3, h: 0.44, fontSize: 12.5, color: HEX.ink });
   });
-  // Column 2: our judgement
-  tb(s, "What the numbers don't say on their own", { x: 4.05, y: 1.6, w: 4.6, h: 0.3, fontSize: 13, bold: true, color: C.accent1 });
-  tag(7.6, 1.62, "OUR VIEW", HEX.red);
-  const views = [
-    ["The AI line is the wrong scoreboard", `1 pt of core growth is worth ~${K.core_vs_ai_ratio} pts of AI growth. Fixing the core adds ~${K.core_fix_total_pts} pts a year (~$${K.core_fix_value_bn.toFixed(1)} bn), as much as ~${K.core_fix_equiv_ai_pts} extra pts of AI growth.`],
-    ["Deflation is hiding in the order book", `Book-to-bill is ${T.book_to_bill.toFixed(2)} (#${K.btb_rank} of 8), yet growth ranks #${K.growth_rank_cc} of 8: TCS is likely winning volume at lower prices. Test it on renewal pricing.`],
-    ["Scale has turned from moat to liability", `At $${T.rev_per_employee_k}k revenue per employee (peer median $${D.rpe_peer_median_k}k), every $1k TCS keeps, rather than passes on, is worth ~$${K.rpe_1k_value_bn} bn. Outcome pricing is how it keeps it.`],
-    ["Breadth is not a strategy", `Joint second-most AI announcements (${T.p1_events}; only HCLTech has more, ${P.HCLTech.p1_events}), yet growth ranks #${K.growth_rank_cc} of 8. Rivals sell depth: Cognizant has committed ${(D.deals.cognizant_openai_staff / 1000).toFixed(0)},000+ staff to OpenAI.`],
-  ];
-  views.forEach(([h, txt], i) => {
-    const y = 1.98 + i * 1.0;
-    s.addShape(pres.shapes.RECTANGLE, { x: 4.05, y, w: 4.6, h: 0.95, fill: { color: HEX.white }, line: { color: HEX.line, width: 0.75 }, objectName: "view-frame-" + i });
-    tb(s, `${i + 1}. ${h}`, { x: 4.2, y: y + 0.07, w: 4.35, h: 0.28, fontSize: 12, bold: true, color: C.accent1 });
-    tb(s, txt, { x: 4.2, y: y + 0.33, w: 4.38, h: 0.56, fontSize: 11 });
-  });
-  // Column 3: decisions
-  card(s, 8.9, 1.6, 3.9, 4.33, HEX.dark, "decisions");
-  tb(s, "Decisions for this quarter", { x: 9.1, y: 1.72, w: 3.5, h: 0.3, fontSize: 13, bold: true, color: HEX.hi });
+
+  // Row 2 left: the insight
+  const top = 3.13, hgt = 2.9;
+  box(0.5, top, 5.9, hgt, HEX.dark, "insight");
+  label("OUR INSIGHT", 0.75, top + 0.2, 3, HEX.hi);
+  tb(s, `~${K.core_vs_ai_ratio}×`, { x: 0.75, y: top + 0.5, w: 1.75, h: 0.9, fontFace: "Arial", fontSize: 54, bold: true, color: HEX.hi, valign: "middle" });
+  tb(s, [
+    { text: `One point of core growth is worth ~${K.core_vs_ai_ratio} points of AI growth.`, options: { bold: true, color: HEX.white, breakLine: true } },
+    { text: `Lifting the core adds ~${K.core_fix_total_pts} pts of growth a year (~$${K.core_fix_value_bn.toFixed(1)} bn).`, options: { color: XS.soft } },
+  ], { x: 2.6, y: top + 0.52, w: 3.65, h: 0.9, fontSize: 14, valign: "middle", paraSpaceAfter: 3 });
+  tb(s, "Why the core is slipping", { x: 0.75, y: top + 1.62, w: 5.4, h: 0.26, fontSize: 12.5, bold: true, color: HEX.hi });
+  tb(s, [
+    { text: "Hidden price deflation: ", options: { bold: true, color: HEX.white } },
+    { text: `book-to-bill ranks #${K.btb_rank} of 8, growth only #${K.growth_rank_cc}`, options: { color: XS.soft, breakLine: true } },
+    { text: "Scale has become a cost: ", options: { bold: true, color: HEX.white } },
+    { text: `every $1k of revenue per employee kept is ~$${K.rpe_1k_value_bn} bn`, options: { color: XS.soft, breakLine: true } },
+    { text: "Breadth, not depth: ", options: { bold: true, color: HEX.white } },
+    { text: `${T.p1_events} AI announcements, yet growth ranks #${K.growth_rank_cc} of 8`, options: { color: XS.soft } },
+  ], { x: 0.75, y: top + 1.95, w: 5.5, h: 0.8, fontSize: 12.5, paraSpaceAfter: 3 });
+
+  // Row 2 right: four decisions
+  const dx = 6.6, dw = 6.2;
+  box(dx, top, dw, hgt, HEX.white, "decisions", XS.line);
+  label("FOUR DECISIONS FOR THIS QUARTER", dx + 0.25, top + 0.2, 5, C.accent3);
   const dec = [
-    ["Lead the re-pricing", "pilot outcome pricing on renewals due within 24 months, before clients reopen them"],
-    ["Turn alliances into certified capacity", "pick 2–3 AI platforms; publish certified headcount"],
-    ["Win share, not just deals", "launch a GCC-takeover offer and a scale M&A screen"],
-    ["Manage “net-new AI”", "make core growth a board KPI next to AI revenue"],
+    ["Lead the re-pricing", "Pilot outcome pricing on renewals due within 24 months"],
+    ["Turn alliances into capacity", "Back 2–3 AI platforms and publish certified headcount"],
+    ["Win share, not just deals", "Launch a GCC-takeover offer and a scale M&A screen"],
+    ["Make core growth a board KPI", "Report it next to AI revenue every quarter"],
   ];
   dec.forEach(([h, d], i) => {
-    const y = 2.1 + i * 0.7;
-    s.addShape(pres.shapes.OVAL, { x: 9.1, y: y + 0.02, w: 0.36, h: 0.36, fill: { color: HEX.hi }, line: { color: HEX.hi }, objectName: "dec-" + i });
-    tb(s, String(i + 1), { x: 9.1, y: y + 0.02, w: 0.36, h: 0.36, fontSize: 12, bold: true, color: HEX.dark, align: "center", valign: "middle" });
-    tb(s, [{ text: h + ": ", options: { bold: true, color: C.background1 } }, { text: d, options: { color: HEX.soft } }], { x: 9.58, y, w: 3.1, h: 0.62, fontSize: 11 });
+    const y = top + 0.55 + i * 0.5;
+    s.addShape(pres.shapes.OVAL, { x: dx + 0.25, y: y + 0.04, w: 0.36, h: 0.36, fill: { color: HEX.teal }, line: { color: HEX.teal }, objectName: "dec-" + i });
+    tb(s, String(i + 1), { x: dx + 0.25, y: y + 0.04, w: 0.36, h: 0.36, fontSize: 13, bold: true, color: HEX.white, align: "center", valign: "middle" });
+    tb(s, h, { x: dx + 0.75, y, w: dw - 0.95, h: 0.24, fontSize: 13.5, bold: true, color: HEX.teal });
+    tb(s, d, { x: dx + 0.75, y: y + 0.22, w: dw - 0.95, h: 0.22, fontSize: 12.5, color: HEX.ink });
   });
-  tb(s, "What we would not do", { x: 9.1, y: 4.95, w: 3.5, h: 0.26, fontSize: 12, bold: true, color: HEX.hi });
-  tb(s, "Chase the AI revenue headline, add more partnership announcements, or rely on HyperVault (revenue 18–24 months out) to fix the core.", { x: 9.1, y: 5.22, w: 3.6, h: 0.62, fontSize: 11, color: HEX.soft });
-  // Bottom: the prize
-  card(s, 0.5, 6.05, 12.3, 0.5, HEX.soft, "prize");
-  tb(s, [{ text: "The 24-month test: ", options: { bold: true, color: C.accent1 } }, { text: `core growth from ${sg(T.core_growth_pct)} to ≥ 0%, outcome-priced revenue disclosed, revenue per employee moving towards $${D.rpe_peer_median_k}k. Miss it and AI must keep growing ~${D.ai_needed_flat_pct}% a year just to stand still.` }],
-    { x: 0.65, y: 6.05, w: 12.0, h: 0.5, fontSize: 12, valign: "middle" });
-  source(s, "facts from Project 2 (TCS Q2 FY27 = calendar Q3 2026; run-rate = quarter × 4), Project 1 events, Gartner via Project 2 and N8. Our view is the author's judgement from that evidence; the order-book point is a hypothesis to test. Arithmetic in src/derive.py.");
-  s.addNotes("Open with the title line, then read across: facts, what they mean, what to decide. If there is time for one number, use the ~9x: one point of core growth is worth about nine points of AI growth.");
+  tb(s, [{ text: "Stop: ", options: { bold: true, color: C.accent3 } }, { text: "chasing the AI revenue headline and adding partnership announcements", options: { color: HEX.grey } }],
+    { x: dx + 0.25, y: top + hgt - 0.34, w: dw - 0.45, h: 0.24, fontSize: 12, valign: "middle" });
+
+  // Row 3: the 24-month test
+  const ty = 6.13;
+  box(0.5, ty, 12.3, 0.55, XS.soft, "test");
+  tb(s, "THE 24-MONTH TEST", { x: 0.72, y: ty, w: 2.2, h: 0.55, fontSize: 11, bold: true, color: HEX.teal, charSpacing: 2, valign: "middle" });
+  [["Core growth", `${sg(T.core_growth_pct)} → ≥ 0%`], ["Outcome-priced revenue", "disclosed"], ["Revenue per employee", `$${T.rev_per_employee_k}k → $${D.rpe_peer_median_k}k`]].forEach(([k, v], i) => {
+    tb(s, [{ text: k + "  ", options: { color: HEX.ink } }, { text: v, options: { bold: true, color: HEX.teal } }], { x: 3.0 + i * 3.27, y: ty, w: 3.15, h: 0.55, fontSize: 13.5, valign: "middle" });
+  });
+  tb(s, "Source: TCS quarterly results (latest quarter = calendar Q3 2026, run-rate = quarter × 4), Gartner IT services forecast, eight-company peer set. Insights and decisions are the author's judgement; the price-deflation point is a hypothesis to test on renewal pricing.",
+    { x: 0.5, y: 6.73, w: 12.3, h: 0.32, fontSize: 9, color: C.accent5 });
+  s.addNotes(`Read the title, then left to right. If there is time for one number, use the ~${K.core_vs_ai_ratio}x: one point of core growth is worth about ${K.core_vs_ai_ratio} points of AI growth. Then ask for the four decisions and agree the 24-month test.`);
 }
 
 // ================= 3. Question and objectives =================
