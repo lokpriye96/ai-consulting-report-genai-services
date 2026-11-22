@@ -91,13 +91,13 @@ npm install pptxgenjs     # Node 18+
 
 ## How this was built
 
-- **AI assistance, disclosed.** I built this project with Claude (Anthropic) as an AI assistant, as I did for Projects 1 and 2.
+- **AI assistance, disclosed.** I built this project with an AI assistant, as I did for Projects 1 and 2.
 - **My role:**
   - choosing the client, the business question and the framing;
   - setting the standards: public data only, every number traceable to Project 1, Project 2 or a cited source, limitations stated;
   - reviewing the storyline, recommendations, KPIs and risks;
   - owning every decision, the published result and the commit history.
-- **Claude's role:** drafting the storyline, finding the new sources, writing the derivation script and deck generator, and drafting this README, under my direction.
+- **The AI assistant's role:** drafting the storyline, finding the new sources, writing the derivation script and deck generator, and drafting this README, under my direction.
 - **Controls, so the numbers do not depend on trusting the AI:**
   1. The deck reads numbers from `data/derived.json` only; nothing is typed into slides by hand.
   2. `derive.py` recomputes from Project 1 and 2 files copied unchanged into `data/inputs/`.
