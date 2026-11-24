@@ -19,7 +19,7 @@ Project 3 of 3 in a linked series:
 1. **The AI line is the wrong scoreboard:** 1 pt of core growth is worth ~9 pts of AI growth.
 2. **Deflation is hiding in the order book:** book-to-bill ranks #2 of 8 but growth ranks #5, so TCS is likely winning volume at lower prices (a hypothesis to test on renewal pricing).
 3. **Scale has turned from moat to liability:** at TCS's headcount, every $1k of revenue per employee it keeps rather than passes on is worth ~$0.6 bn.
-4. **Breadth is not a strategy:** joint second-most AI announcements (11; only HCLTech has more, with 12), yet growth ranks #5 of 8.
+4. **Breadth is not a strategy:** joint third-most AI announcements (11, behind HCLTech and Cognizant at 12 each), yet growth ranks #5 of 8.
 
 ---
 
@@ -41,7 +41,7 @@ Project 3 of 3 in a linked series:
 |---|---|---|
 | **Situation** | AI is 10.1% of TCS revenue: a $3.1 bn run-rate, up 72% in three quarters. Book-to-bill is 1.26. | Project 2; TCS releases |
 | **Complication 1** | TCS's non-AI core is shrinking 3.6% a year. TCS grew 2.4% in USD vs 8.7% for the IT services market. | Project 2 `sql/03`, `sql/01`; Gartner |
-| **Complication 2** | Clients want the same output for 25–30% less and reopen contracts within 24 months. Announcement counts correlate −0.66 with growth. | N1, N2, N3; Projects 1 × 2 |
+| **Complication 2** | Clients want the same output for 25–30% less and reopen contracts within 24 months. Announcement counts correlate −0.57 with growth (n=8, not significant). | N1, N2, N3; Projects 1 × 2 |
 | **So what** | At today's core decline, AI must grow ~32% a year just to keep revenue flat. 1 pt of core growth adds ~0.9 pt of total growth; 10 pts of AI growth add ~1.0 pt. | `src/derive.py` |
 
 ## Recommendations (in priority order)
@@ -49,9 +49,9 @@ Project 3 of 3 in a linked series:
 | # | Move | Rationale | KPIs to track | Main risk |
 |---|---|---|---|---|
 | 1 | **Lead the re-pricing:** move the application and infrastructure annuity book to outcome pricing before clients force it | Core −3.6%/yr is the biggest drag; ~80% of TCS's finance, HR and BPO contracts already run on outcomes (N1) | Core growth −3.6%/yr → ≥ 0% in 24 months; share of outcome-priced revenue; renewal price change; EBIT margin vs 25%+ target | TCS takes delivery risk |
-| 2 | **Turn alliances into certified capacity:** 2–3 platforms, named certified teams | Announcements do not predict growth (ρ = −0.66); widest bench, slowest of the four largest firms | Certified practitioners per platform; AI bookings and win rate per alliance | Model leadership shifts |
+| 2 | **Turn alliances into certified capacity:** 2–3 platforms, named certified teams | Announcements do not predict growth (ρ = −0.57, n=8, not significant); widest bench, slowest of the four largest firms | Certified practitioners per platform; AI bookings and win rate per alliance | Model leadership shifts |
 | 3 | **Win share, not just deals:** AI-led operations, GCC takeovers, scale M&A | Book-to-bill 1.26 but growth 2.4% vs market 8.7%; Capgemini bought scale (WNS, $3.3 bn) | Share of Gartner IT services (1.64% today); TCV-to-growth conversion; GCC takeovers | Integration, margin dilution |
-| 4 | **Manage “net-new AI”:** run and report on core growth, AI bookings, revenue per employee | AI share does not predict growth (ρ = −0.05); revenue per employee $51.1k vs peer median $62.5k | Core growth disclosed quarterly; AI share of bookings; revenue per employee | Disclosure exposes the decline |
+| 4 | **Manage “net-new AI”:** run and report on core growth, AI bookings, revenue per employee | AI share does not predict growth (ρ = −0.05, n=8, not significant; five AI shares are estimates); revenue per employee $51.1k vs peer median $63.0k (seven peers, excluding TCS) | Core growth disclosed quarterly; AI share of bookings; revenue per employee | Disclosure exposes the decline |
 
 KPI targets are proposals, not forecasts. The 36-month roadmap and decision gates are on slide 11.
 
@@ -63,7 +63,7 @@ New public sources (N1–N8) ─────────────▶ data/new
 ```
 
 - **No hand-typed numbers in the deck.** `src/build_deck.js` reads only `data/derived.json` and the cited new-source facts. `tests/test_derived.py` pins the headline numbers.
-- **Inputs:** Project 2 SQL results, analysis files and TCS AI disclosures; Project 1's 72-event database (70 verified). Basis: latest quarter = calendar Q3 2026 (TCS Q2 FY27); run-rate = quarter × 4; USD.
+- **Inputs:** Project 2 SQL results, analysis files and TCS AI disclosures; Project 1's 80-event database (verified against source). Basis: latest quarter = calendar Q3 2026 (TCS Q2 FY27); run-rate = quarter × 4; USD.
 - **Derived arithmetic:** TCS core = revenue − AI. One-year growth = (AI × AI growth + core × core growth) ÷ total.
 - **New sources (N1–N8),** all public, listed with URLs in [`data/new_sources.csv`](data/new_sources.csv): Reuters (via Outsource Accelerator) on outcome pricing, HFS Research on renegotiation, Everest Group (via Let's Data Science/Moneycontrol) on deflation, JM Financial (via Business Today) and Business Standard on TCS management views, Tata Group, Inc42 and People Matters on HyperVault.
 - **Native PowerPoint charts and tables,** so every chart can be edited in PowerPoint.
@@ -84,7 +84,7 @@ npm install pptxgenjs     # Node 18+
 - **Thin time series:** TCS's core growth rests on two points three quarters apart, annualised.
 - **Run-rate = quarter × 4,** which ignores seasonality.
 - **The sensitivity table is one-year arithmetic, not a forecast.** KPI targets and impact ratings are the author's proposals.
-- **Small sample:** correlations use 8 firms. They are directional, not statistical proof.
+- **Small sample:** correlations use 8 firms (p≈0.14 for the −0.57 event correlation; none is significant). They are directional, not statistical proof.
 - **Secondary sources:** N1–N5, N7 and N8 are press or analyst reports of company figures; each is marked in the source list.
 - **Out of scope:** the HyperVault AI data-centre business (a separate capital case) and the share price.
 - **Hypothetical client.** No TCS input was used; this is an outside-in view on public data.

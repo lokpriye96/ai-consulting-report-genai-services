@@ -127,7 +127,7 @@ out = {
         }
         for k in FIRMS
     },
-    "rpe_peer_median_k": round(median(rpe.values()), 1),
+    "rpe_peer_median_k": round(median(v for k, v in rpe.items() if k != "TCS"), 1),  # the seven peers, excluding TCS
     "market": {
         "eight_yoy_usd_pct": round(stats["eight_firm_yoy_usd_pct"], 1),
         "gartner_it_services_growth_pct": round(stats["gartner_it_services_growth_2026_pct"], 1),

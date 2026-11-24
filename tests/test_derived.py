@@ -24,9 +24,9 @@ def test_arithmetic():
 
 
 def test_project_links():
-    assert D["p1"] == {"events_total": 79, "events_verified": 79, "tcs_verified": 11}
-    assert D["market"]["spearman_events_vs_growth"] == -0.66
-    assert D["rpe_peer_median_k"] == 62.5
+    assert D["p1"] == {"events_total": 80, "events_verified": 80, "tcs_verified": 11}
+    assert D["market"]["spearman_events_vs_growth"] == -0.57
+    assert D["rpe_peer_median_k"] == 63.0
 
 
 def test_ceo_page():

@@ -107,7 +107,7 @@ pres.addSection({ title: "Introduction" });
   const kpis = [
     [`$${T.ai_runrate_bn.toFixed(1)} bn`, `AI revenue run-rate, up ${T.ai_3q_growth_pct}% in three quarters`, HEX.teal],
     [sg(T.core_growth_pct), `a year: the $${T.core_runrate_bn.toFixed(1)} bn non-AI core is shrinking`, HEX.red],
-    [`+${T.yoy_usd_pct}%`, `growth vs ${M.gartner_it_services_growth_pct}% for the market: TCS is losing share`, HEX.red],
+    [`+${T.yoy_usd_pct}%`, `growth vs ${M.gartner_it_services_growth_pct}% market forecast (different bases): TCS trails the market`, HEX.red],
     [`~${D.ai_needed_flat_pct}%`, "a year of AI growth needed just to keep revenue flat", HEX.red],
   ];
   const kw = 2.925, kg = 0.2;
@@ -192,7 +192,7 @@ pres.addSection({ title: "Introduction" });
     { text: "Sequence them into a 36-month roadmap", options: { bullet: { type: "number" } } },
   ], { x: 8.5, y: 2.2, w: 4.1, h: 1.75, fontSize: 14, paraSpaceAfter: 4 });
   tb(s, "Scope", { x: 8.5, y: 3.95, w: 4.1, h: 0.3, fontSize: 13, bold: true, color: C.accent1 });
-  tb(s, `TCS vs 7 peers from Projects 1 and 2; public data; latest quarter = calendar Q3 2026. Out of scope: the HyperVault data-centre business (a separate capex case) and the share price.`, { x: 8.5, y: 4.27, w: 4.1, h: 0.95, fontSize: 13 });
+  tb(s, `TCS vs 7 peers from Projects 1 and 2; public data; latest quarter = calendar Q3 2026. Out of scope: the HyperVault data-centre business (N6, N7; a separate capex case) and the share price.`, { x: 8.5, y: 4.27, w: 4.1, h: 0.95, fontSize: 13 });
   tb(s, "Decision owner (hypothetical): CEO and strategy office", { x: 8.5, y: 5.2, w: 4.1, h: 0.3, fontSize: 12, italic: true, color: C.accent5 });
   source(s, "Project 2 core-vs-AI analysis (sql/03_core_vs_ai.sql) and evidence grades; author's framing.");
 }
@@ -211,7 +211,7 @@ pres.addSection({ title: "Situation and complication" });
   const stats = [
     [`${T.ai_share_pct}%`, "of revenue is AI", `$${T.ai_runrate_bn.toFixed(1)} bn of a $${T.revenue_runrate_bn.toFixed(1)} bn run-rate`, HEX.teal],
     [`+${T.ai_3q_growth_pct}%`, "AI growth in three quarters", "Q3 FY26 to Q2 FY27", HEX.teal],
-    [T.book_to_bill.toFixed(2), "book-to-bill", `TCV $${T.tcv_q_bn} bn in the quarter; second highest of the eight`, HEX.teal],
+    [T.book_to_bill.toFixed(2), "book-to-bill", `TCV $${T.tcv_q_bn} bn in the quarter; book-to-bill ranks second of the eight`, HEX.teal],
     [String(T.p1_events), "verified AI announcements", `Project 1; widest frontier-lab bench: ${T.p1_frontier_labs.split(",").join(", ")}`, HEX.teal],
   ];
   stats.forEach(([big, lab, sub, col], i) => {
@@ -227,7 +227,7 @@ pres.addSection({ title: "Situation and complication" });
 // ================= 5. Complication 1 =================
 {
   const s = content("Situation and complication", "COMPLICATION 1",
-    "But AI is replacing TCS's core business rather than adding to it, and TCS is losing share");
+    "But AI is replacing TCS's core business rather than adding to it, and TCS is trailing the market");
   const disc = ["Infosys", "TCS", "HCLTech", "Accenture"];
   const coreVals = disc.map(k => P[k].core_growth_pct);
   s.addChart(pres.charts.BAR, [{ name: "Core growth", labels: disc, values: coreVals }], Object.assign(chartBase(), {
@@ -239,7 +239,7 @@ pres.addSection({ title: "Situation and complication" });
     valAxisHidden: true, valAxisMinVal: -7, valAxisMaxVal: 6, valGridLine: { style: "none" }, catAxisLabelPos: "low",
   }));
   const aiG = disc.map(k => `${k} ${Math.round(P[k].ai_growth_pct)}%`).join(" · ");
-  tb(s, `Over the same windows, AI revenue grew: ${aiG} a year`, { x: 0.5, y: 5.95, w: 6.0, h: 0.55, fontSize: 12, color: C.accent5 });
+  tb(s, `AI revenue growth, annualised, over each firm's own window: ${aiG}`, { x: 0.5, y: 5.95, w: 6.0, h: 0.55, fontSize: 12, color: C.accent5 });
 
   const share = Object.fromEntries(fs.readFileSync(path.join(ROOT, "data/inputs/01_market_share.csv"), "utf8").trim().split("\n").slice(1).map(l => { const c = l.split(","); return [c[0], parseFloat(c[6])]; }));
   const order = Object.keys(share).sort((a, b) => share[b] - share[a]);
@@ -284,7 +284,7 @@ pres.addSection({ title: "Situation and complication" });
     showCatAxisTitle: true, catAxisTitle: "Verified AI announcements per firm, Jun 2025 – Nov 2026", catAxisTitleFontSize: 10, catAxisTitleColor: HEX.grey, catAxisTitleFontFace: FONT,
     catAxisLabelFontSize: 10, catGridLine: { style: "none" },
   }));
-  tb(s, "HCLTech (12), TCS and Wipro (11 each) announced most, yet each grew under 3%", { x: 7.1, y: 6.22, w: 5.7, h: 0.35, fontSize: 12, italic: true, color: C.accent5 });
+  tb(s, "HCLTech and Cognizant (12 each) announced most; HCLTech, TCS and Wipro grew under 3%", { x: 7.1, y: 6.22, w: 5.7, h: 0.35, fontSize: 12, italic: true, color: C.accent5 });
   source(s, "N1 Outsource Accelerator reporting Reuters (28 Aug 2026); N2 HFS Research (30 Jun 2026); N3 Let's Data Science reporting Moneycontrol/Everest Group (27 Oct 2026); Project 2 sql/05_momentum_vs_money.sql. Eight firms only: directional, not proof.");
 }
 
@@ -353,7 +353,7 @@ const DETAIL = [
     rationale: [
       `The core (${sg(T.core_growth_pct)}/yr) is the biggest drag on growth (slide 7)`,
       "Clients want 25–30% less and reopen deals within 24 months (N1, N2)",
-      "TCS already runs ~80% of finance, HR and BPO contracts on outcomes (N1): extend the model to the larger IT annuity book",
+      "A Reuters report says ~80% of TCS's finance, HR and BPO contracts run on outcomes (N1): extend the model to the larger IT annuity book",
     ],
     kpis: [
       `Core (non-AI) growth: ${sg(T.core_growth_pct)}/yr → ≥ 0% within 24 months`,
@@ -369,7 +369,7 @@ const DETAIL = [
   {
     r: RECS[1],
     rationale: [
-      `Project 1 announcement counts correlate ${mn(M.spearman_events_vs_growth)} with growth`,
+      `Project 1 announcement counts correlate ${mn(M.spearman_events_vs_growth)} with growth (n=8, not significant)`,
       `Widest bench (${T.p1_frontier_lab_events} frontier labs, ${T.p1_partnerships} partnerships), yet slowest grower of the four largest firms`,
       `Rivals sell capacity: Cognizant has committed ${(D.deals.cognizant_openai_staff / 1000).toFixed(0)},000+ staff to OpenAI, ${(D.deals.cognizant_gemini_staff / 1000).toFixed(0)},000 to Gemini`,
     ],
@@ -387,7 +387,7 @@ const DETAIL = [
     r: RECS[2],
     rationale: [
       `Book-to-bill ${T.book_to_bill.toFixed(2)}, but growth ${T.yoy_usd_pct}% vs the market's ${M.gartner_it_services_growth_pct}%: bookings are not becoming share`,
-      "GCC takeovers (e.g. Best Buy, Q2 FY27) win deals: four Indian firms used them in 2026 (Project 1)",
+      "GCC takeovers (e.g. Best Buy, Q2 FY27) win deals: three Indian firms used GCC transfers in 2026 (Project 1); Infosys is building one for Truist",
       `Fastest grower Capgemini bought scale (WNS, $${(D.deals.capgemini_wns_usd_m / 1000).toFixed(1)} bn); TCS's largest: Coastal Cloud, $${(T.largest_acq_usd_m / 1000).toFixed(1)} bn`,
     ],
     kpis: [
@@ -404,7 +404,7 @@ const DETAIL = [
   {
     r: RECS[3],
     rationale: [
-      `AI share of revenue does not predict growth (ρ = ${mn(M.spearman_ai_vs_growth)}); definitions differ across firms`,
+      `AI share of revenue does not predict growth (ρ = ${mn(M.spearman_ai_vs_growth)}, n=8, not significant; five AI shares are estimates)`,
       "TCS's CEO: AI-assisted delivery is not automatically AI revenue (N5); the AI line can rise while the company stalls",
       `Revenue per employee $${T.rev_per_employee_k}k vs peer median $${D.rpe_peer_median_k}k (Accenture $${P.Accenture.rev_per_employee_k}k)`,
     ],
@@ -522,7 +522,7 @@ pres.addSection({ title: "Appendix" });
     { text: "Built with AI assistance (disclosed in the README); the author set the question, checked every figure and owns the conclusions", options: { bullet: true } },
   ], { x: 0.5, y: 1.95, w: 4.0, h: 4.5, fontSize: 12, paraSpaceAfter: 4 });
   const src = [
-    ["P1", "AI-Powered CI Tracker: github.com/lokpriye96/ai-ci-tracker (72 events, 70 verified)"],
+    ["P1", "AI-Powered CI Tracker: github.com/lokpriye96/ai-ci-tracker (80 events, verified against source)"],
     ["P2", "GenAI Services Market Analytics: github.com/lokpriye96/genai-services-market-analytics (inputs used: TCS Q3 FY26–Q2 FY27 releases; Gartner IT services spending, 2026)"],
     ["N1", "Outsource Accelerator reporting Reuters, 28 Aug 2026: outcome pricing at TCS; 25–30% client ask"],
     ["N2", "HFS Research, 30 Jun 2026: contracts renegotiated within 24 months"],
