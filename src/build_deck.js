@@ -387,7 +387,7 @@ const DETAIL = [
     r: RECS[2],
     rationale: [
       `Book-to-bill ${T.book_to_bill.toFixed(2)}, but growth ${T.yoy_usd_pct}% vs the market's ${M.gartner_it_services_growth_pct}%: bookings are not becoming share`,
-      "GCC takeovers (e.g. Best Buy, Q2 FY27) win deals: three Indian firms used GCC transfers in 2026 (Project 1); Infosys is building one for Truist",
+      "GCC takeovers (e.g. Best Buy, Q2 FY27) win deals: two Indian firms (HCLTech, TCS) took over client GCCs in 2026 (Project 1); Infosys is building one for Truist",
       `Fastest grower Capgemini bought scale (WNS, $${(D.deals.capgemini_wns_usd_m / 1000).toFixed(1)} bn); TCS's largest: Coastal Cloud, $${(T.largest_acq_usd_m / 1000).toFixed(1)} bn`,
     ],
     kpis: [
